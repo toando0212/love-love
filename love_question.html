@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Do you love me?</title>
+  <style>
+    body {
+      background: #ffe6f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    h1 {
+      color: #ff69b4;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 5px #fff0f5;
+    }
+    .btns {
+      display: flex;
+      gap: 20px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 25px;
+      background: #fff;
+      color: #ff69b4;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #f8bbd0;
+      transition: all 0.2s;
+    }
+    button:active {
+      background: #ffe6f2;
+    }
+    #cute {
+      margin-top: 40px;
+      font-size: 3em;
+      animation: pop 0.5s;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5);}
+      100% { transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <h1>Do you love me? 💖</h1>
+  <div class="btns">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+  <div id="cute"></div>
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const cuteDiv = document.getElementById('cute');
+    let noBtnSize = 1;
+    let yesBtnSize = 1;
+    yesBtn.onclick = function() {
+      cuteDiv.innerHTML = '😍🥰💞<br><img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="cute gif" style="width:120px;border-radius:20px;">';
+      document.querySelector('.btns').style.display = 'none';
+    };
+    noBtn.onclick = function() {
+      noBtnSize *= 0.7;
+      yesBtnSize *= 1.2;
+      noBtn.style.transform = `scale(${noBtnSize})`;
+      yesBtn.style.transform = `scale(${yesBtnSize})`;
+      noBtn.textContent = "pls click yes";
+      if (noBtnSize < 0.2) {
+        noBtn.disabled = true;
+        noBtn.style.opacity = 0.5;
+      }
+    };
+  </script>
+</body>
+</html>
